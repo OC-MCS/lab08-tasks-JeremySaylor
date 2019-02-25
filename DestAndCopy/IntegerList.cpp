@@ -71,3 +71,43 @@ int IntegerList::getNumElements() const
 {
 	return numElements;
 }
+
+//IntegerList::~IntegerList()
+//{
+//	delete[] list;
+//}
+
+//IntegerList::IntegerList()
+//{}
+
+IntegerList::IntegerList(const IntegerList &other)
+{
+	/*if (this != &other)
+	{*/
+		
+		list = new int[other.numElements];
+		numElements = other.numElements;
+		for (int i = 0; i < numElements; i++)
+		{
+			list[i] = other.list[i];
+		}
+	/*}*/
+	
+}
+
+IntegerList IntegerList::operator = (const IntegerList &other)
+{
+	if (this != &other)
+	{
+		delete[] list;
+		list = new int[other.numElements];
+		numElements = other.numElements;
+		for (int i = 0; i < numElements; i++)
+		{
+			list[i] = other.list[i];
+		}
+
+		//list = other.list;
+	}
+	return *this;
+}
